@@ -1,0 +1,18 @@
+{
+  "extends": "@repo/typescript-config/base.json",
+  "compilerOptions": {
+    "target": "ES2017",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "jsx": "react-jsx",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "@repo/components/ui/*": ["./src/ui/*"],
+      "@repo/components/lib/*": ["./src/lib/*"],
+      "@repo/components/hooks/*": ["./src/hooks/*"]
+    }
+  },
+  "include": ["src"]
+}
