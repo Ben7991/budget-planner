@@ -1,6 +1,6 @@
 # The Budget Planner
 
-Monorepo for a personal budget planner. What the product should do is written in [docs/product-spec.md](docs/product-spec.md). That spec is the source of truth for future work, including what ships now, next, and later.
+Monorepo for a personal budget planner. What the product should do is written in [docs/product-spec.md](docs/product-spec.md). That spec is the source of truth for future work, including what ships now, next, and later. Where new shared UI goes is written in [packages/components/ARCHITECTURE.md](packages/components/ARCHITECTURE.md).
 
 ## Apps
 

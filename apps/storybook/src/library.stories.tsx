@@ -4,11 +4,17 @@ import type { ComponentType, ReactNode } from "react";
 type UiModule = Record<string, unknown>;
 
 const uiModules = import.meta.glob<UiModule>(
-  "../../../packages/components/src/ui/*.tsx",
+  [
+    "../../../packages/components/src/atoms/**/*.tsx",
+    "../../../packages/components/src/molecules/**/*.tsx",
+    "../../../packages/components/src/organisms/**/*.tsx",
+    "../../../packages/components/src/templates/**/*.tsx",
+  ],
   { eager: true },
 );
 
 const components = Object.entries(uiModules)
+  .filter(([path]) => !path.includes(".stories."))
   .flatMap(([, mod]) =>
     Object.entries(mod).flatMap(([name, value]) => {
       if (!/^[A-Z]/.test(name) || typeof value !== "function") {
@@ -31,7 +37,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Every component exported from @repo/components. A new file in packages/components/src/ui appears here on the next load.",
+          "Every component exported from @repo/components. A new component under atoms, molecules, organisms, or templates appears here on the next load.",
       },
     },
   },

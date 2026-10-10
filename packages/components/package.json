@@ -4,7 +4,10 @@
   "private": true,
   "type": "module",
   "exports": {
-    "./ui/*": "./src/ui/*.tsx",
+    "./atoms/*": "./src/atoms/*/index.ts",
+    "./molecules/*": "./src/molecules/*/index.ts",
+    "./organisms/*": "./src/organisms/*/index.ts",
+    "./templates/*": "./src/templates/*/index.ts",
     "./lib/*": "./src/lib/*.ts",
     "./hooks/*": "./src/hooks/*.ts"
   },

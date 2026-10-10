@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Wallet } from "lucide-react";
-import { Button } from "@repo/components/ui/button";
+import { Button } from "@repo/components/atoms/button";
 
 export default function Home() {
   return (

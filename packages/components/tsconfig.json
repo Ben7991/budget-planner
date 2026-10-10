@@ -7,12 +7,15 @@
     "module": "esnext",
     "moduleResolution": "bundler",
     "noEmit": true,
-    "baseUrl": ".",
     "paths": {
-      "@repo/components/ui/*": ["./src/ui/*"],
+      "@repo/components/atoms/*": ["./src/atoms/*/index.ts"],
+      "@repo/components/molecules/*": ["./src/molecules/*/index.ts"],
+      "@repo/components/organisms/*": ["./src/organisms/*/index.ts"],
+      "@repo/components/templates/*": ["./src/templates/*/index.ts"],
       "@repo/components/lib/*": ["./src/lib/*"],
       "@repo/components/hooks/*": ["./src/hooks/*"]
     }
   },
   "include": ["src"]
 }
+  

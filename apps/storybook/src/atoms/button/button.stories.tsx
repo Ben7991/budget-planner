@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Button } from "@repo/components/ui/button";
+import { Button } from "@repo/components/atoms/button";
 import { Wallet } from "lucide-react";
 
 const meta = {
-  title: "Components/Button",
+  title: "Atoms/Button",
   component: Button,
   tags: ["autodocs"],
   args: {

@@ -17,7 +17,7 @@
     "hooks": "@/hooks",
     "lib": "@/lib",
     "utils": "@repo/components/lib/utils",
-    "ui": "@repo/components/ui"
+    "ui": "@repo/components/atoms"
   },
   "menuColor": "default",
   "menuAccent": "subtle",
