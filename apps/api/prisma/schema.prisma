@@ -1,0 +1,86 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum BudgetMethod {
+  fifty_thirty_twenty
+  zero_based
+  envelopes
+  custom
+}
+
+enum PayCycle {
+  weekly
+  biweekly
+  semimonthly
+  monthly
+}
+
+enum OnboardingStatus {
+  pending
+  skipped
+  complete
+}
+
+model User {
+  id             String          @id @default(cuid())
+  email          String          @unique
+  passwordHash   String
+  createdAt      DateTime        @default(now())
+  profile        Profile?
+  sessions       Session[]
+  goals          Goal[]
+  categoryGroups CategoryGroup[]
+}
+
+model Session {
+  id        String    @id @default(cuid())
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tokenHash String    @unique
+  userAgent String?
+  createdAt DateTime  @default(now())
+  expiresAt DateTime
+  revokedAt DateTime?
+
+  @@index([userId])
+}
+
+model Profile {
+  userId             String           @id
+  user               User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  locale             String?
+  baseCurrency       String?
+  budgetMethod       BudgetMethod?
+  payCycle           PayCycle?
+  nextPayDate        DateTime?        @db.Date
+  onboardingStatus   OnboardingStatus @default(pending)
+}
+
+model Goal {
+  id           String   @id @default(cuid())
+  userId       String
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name         String
+  targetAmount Int
+  targetDate   DateTime @db.Date
+  createdAt    DateTime @default(now())
+
+  @@index([userId])
+}
+
+model CategoryGroup {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name      String
+  sortOrder Int
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+}
